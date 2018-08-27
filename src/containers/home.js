@@ -27,7 +27,11 @@ export default class Home extends Component {
     const { projects } = this.state;
     return (
       <div className="page-wrapper">
-        <header> fa </header>
+        <header className="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+          <span className="logo">
+            Up | Track
+          </span>
+        </header>
         <div className="container">
           <div className="row container">
             {this.renderPageInfo()}
