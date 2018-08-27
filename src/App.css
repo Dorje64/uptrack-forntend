@@ -43,3 +43,7 @@
   font-family: fantasy;
   font-weight: bold;
 }
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
