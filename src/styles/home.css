@@ -1,0 +1,12 @@
+.create-button {
+  float: right;
+}
+
+.page-info{
+  width: 100%;
+}
+
+.page-info .text{
+  float: left;
+  color: #009efb;
+}
