@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ProjectCard from '../components/project-card';
 
 export default class Home extends Component {
   constructor() {
@@ -10,7 +11,19 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div> This is home page </div>
+      <div className="page-wrapper">
+        <header> fa </header>
+        <div className="container">
+          <div className="row page-info">
+            Dashboard
+          </div>
+          <div className="row project-info">
+            <ProjectCard />
+            <ProjectCard />
+          </div>
+          <div className="row project-details" />
+        </div>
+      </div>
     );
   }
 }
