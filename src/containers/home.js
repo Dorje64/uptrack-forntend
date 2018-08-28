@@ -30,9 +30,9 @@ export default class Home extends Component {
           name: 'IW web',
           repo: 'github',
           commit: '111',
-          modal: false,
         },
       ],
+      modal: false,
     };
   }
 
