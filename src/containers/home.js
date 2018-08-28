@@ -58,18 +58,18 @@ export default class Home extends Component {
           <Button color="secondary" onClick={this.toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>
-    )
+    );
   }
 
   toggle = () => {
     const { modal } = this.state;
     this.setState({
-      modal: !modal
+      modal: !modal,
     });
   }
 
   handleInput = (e) => {
-    this.setState({ [e.target.name]: e.targe.value })
+    this.setState({ [e.target.name]: e.targe.value });
   }
 
   form = () => (
