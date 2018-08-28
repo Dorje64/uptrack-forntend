@@ -30,9 +30,9 @@ export default class Home extends Component {
           name: 'IW web',
           repo: 'github',
           commit: '111',
+          modal: false,
         },
       ],
-      modal: false,
     };
   }
 
@@ -69,14 +69,21 @@ export default class Home extends Component {
   }
 
   handleInput = (e) => {
-    this.setState({ [e.target.name]: e.targe.value });
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  createProject = () => {
+    const { repo, projectName, projects } = this.state;
+    const newProject = { name: projectName, repo, commit: 0 };
+    this.setState({ projects: [...projects, newProject] });
+    this.toggle();
   }
 
   form = () => (
     <div className="container">
       <FormGroup row>
         <Label>Project Name</Label>
-        <Input type="text" name="project-name" placeholder="Project Name" onChange={this.handleInput} />
+        <Input type="text" name="projectName" placeholder="Project Name" onChange={this.handleInput} />
       </FormGroup>
       <FormGroup row>
         <Label>Project Repo</Label>
