@@ -4,6 +4,8 @@ import {
   Input, Label, FormGroup,
 } from 'reactstrap';
 import ProjectCard from '../components/project-card';
+// import Editor from '../components/editor';
+import Graph from '../components/linechart';
 import '../styles/home.css';
 
 export default class Home extends Component {
@@ -116,7 +118,11 @@ export default class Home extends Component {
           <div className="row project-info">
             {projects.map(project => (<ProjectCard project={project} />))}
           </div>
-          <div className="row project-details" />
+          <div className="row project-details">
+            <div className="col-sm-12 col-md-7">
+              <Graph />
+            </div>
+          </div>
         </div>
       </div>
     );
