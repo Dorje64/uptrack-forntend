@@ -5,7 +5,7 @@ import {
 } from 'reactstrap';
 import ProjectCard from '../components/project-card';
 // import Editor from '../components/editor';
-import Graph from '../components/linechart';
+import Graph from '../components/graph';
 import '../styles/home.css';
 
 export default class Home extends Component {
