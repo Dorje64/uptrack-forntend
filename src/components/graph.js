@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
-LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid,
+  LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid,
 } from 'recharts';
 
 const data = [
