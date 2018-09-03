@@ -4,7 +4,7 @@ import {
   Input, Label, FormGroup,
 } from 'reactstrap';
 import ProjectCard from '../components/project-card';
-// import Editor from '../components/editor';
+import Header from '../components/header';
 import Graph from '../components/graph';
 import '../styles/home.css';
 
@@ -106,11 +106,7 @@ export default class Home extends Component {
     const { projects } = this.state;
     return (
       <div className="page-wrapper">
-        <header className="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
-          <span className="logo">
-            Up | Track
-          </span>
-        </header>
+        <Header />
         <div className="container">
           <div className="row container">
             {this.renderPageInfo()}
