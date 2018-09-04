@@ -1,0 +1,30 @@
+.project-desciption {
+  width: 100%;
+  height: 100px;
+  align-items: left;
+}
+
+.project-name {
+  margin-top: 10px;
+  /* float: center; */
+  color: #009efb;
+
+}
+
+.heading {
+  font-weight: bold;
+
+}
+.project-details {
+  align-content: flex-start;
+}
+
+.update {
+  padding: 10px;
+  border-bottom: 1px solid #a0b0ba;
+}
+
+.date {
+  color: #a0b0ba;
+  float: right;
+}
