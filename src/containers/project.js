@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import Header from '../components/header';
 import Editor from '../components/editor';
 import { getProject, createUpdate, fetchUpdates } from '../api';
+import '../styles/project.css';
+
+
+function dateInWords(str) {
+  const strDate = str.substr(0, str.indexOf('T'));
+  const date = new Date(strDate);
+  return date.toDateString();
+}
 
 export default class Project extends Component {
   constructor(props) {
@@ -27,6 +35,20 @@ export default class Project extends Component {
       .catch((error) => { alert(error); });
   }
 
+  renderProjectList = updates => (
+    <div className="card">
+      <div className="card-header heading">Update List</div>
+      { updates.map(update => (
+        <div className="update">
+          <p>
+            { update.text }
+          </p>
+          <span className="date">
+            {dateInWords(update.created_at)}
+          </span>
+        </div>)) }
+    </div>)
+
   render() {
     const { project, updates } = this.state;
     return (
@@ -34,20 +56,15 @@ export default class Project extends Component {
         <Header />
         <div className="container">
           <div className="project-desciption">
-            {project.name}
-            {project.repo_dir}
+            <div className= "card container">
+              <h3 className="project-name"> Project: {project.name} </h3>
+              <h6 className="project-details"> Repo Dir: {project.repo_dir} </h6>
+            </div>
           </div>
 
           <div className="row">
             <div className="col-md-6">
-              <div className="card">
-                Update List
-                { updates.map(update => (
-                  <div className="update">
-                    <p> { update.created_at } </p>
-                    <span> { update.text } </span>
-                  </div>)) }
-              </div>
+              {this.renderProjectList(updates)}
             </div>
             <div className="col-md-6">
               <Editor />
