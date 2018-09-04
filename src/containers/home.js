@@ -7,35 +7,22 @@ import ProjectCard from '../components/project-card';
 import Header from '../components/header';
 import Graph from '../components/graph';
 import '../styles/home.css';
+import { createProject, fetchProjects } from '../api';
 
 export default class Home extends Component {
   constructor() {
     super();
     this.state = {
-      projects: [
-        {
-          name: 'Limelight',
-          repo: 'codecommit',
-          commit: '111',
-        },
-        {
-          name: 'Uptrack',
-          repo: 'github',
-          commit: '111',
-        },
-        {
-          name: 'Yeti',
-          repo: 'gitlab',
-          commit: '111',
-        },
-        {
-          name: 'IW web',
-          repo: 'github',
-          commit: '111',
-        },
-      ],
+      projects: [],
       modal: false,
     };
+  }
+
+  componentDidMount() {
+    fetchProjects()
+      .then((res) => {
+        this.setState({ projects: res.data })
+      })
   }
 
   renderPageInfo = () => (
@@ -56,7 +43,7 @@ export default class Home extends Component {
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={this.createProject}>Create</Button>
-          {' '}
+        ;;  {' '}
           <Button color="secondary" onClick={this.toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>
@@ -75,10 +62,14 @@ export default class Home extends Component {
   }
 
   createProject = () => {
-    const { repo, projectName, projects } = this.state;
-    const newProject = { name: projectName, repo, commit: 0 };
-    this.setState({ projects: [...projects, newProject] });
-    this.toggle();
+    const { repo_dir, projectName, projects } = this.state;
+    const payload = { name: projectName, repo_dir: repo_dir };
+    createProject(payload)
+      .then((res) => {
+        this.setState({ projects: [...projects, res.data] });
+        this.toggle();
+      })
+      .catch((error) => { alert(error); })
   }
 
   form = () => (
@@ -89,7 +80,7 @@ export default class Home extends Component {
       </FormGroup>
       <FormGroup row>
         <Label>Project Repo</Label>
-        <Input type="text" name="repo" placeholder="github" onChange={this.handleInput} />
+        <Input type="text" name="repo_dir" placeholder="github" onChange={this.handleInput} />
       </FormGroup>
       <FormGroup row>
         <Label>Username</Label>
@@ -100,7 +91,7 @@ export default class Home extends Component {
         <Input type="password" name="password" onChange={this.handleInput} />
       </FormGroup>
     </div>
-  )
+  );;
 
   render() {
     const { projects } = this.state;
