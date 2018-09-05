@@ -15,7 +15,8 @@ export function getProject(projectId) {
 }
 
 export function createUpdate(payload) {
-  return api.post('updates/', payload);
+  const { project } = payload;
+  return api.post(`projects/${project}/updates/`, payload);
 }
 
 export function fetchUpdates(projectId) {
