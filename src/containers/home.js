@@ -7,7 +7,7 @@ import ProjectCard from '../components/project-card';
 import Header from '../components/header';
 import Graph from '../components/graph';
 import '../styles/home.css';
-import { createProject, fetchProjects } from '../api';
+import { createProject, fetchProjects, getUpdateCount } from '../api';
 
 export default class Home extends Component {
   constructor() {
@@ -15,6 +15,7 @@ export default class Home extends Component {
     this.state = {
       projects: [],
       modal: false,
+      updatesCount: [],
     };
   }
 
@@ -22,7 +23,16 @@ export default class Home extends Component {
     fetchProjects()
       .then((res) => {
         this.setState({ projects: res.data })
+      });
+
+    getUpdateCount()
+      .then((res) => {
+        this.setState({ updatesCount: res.data })
       })
+      .catch((error) => {
+        alert(error);
+      })
+
   }
 
   renderPageInfo = () => (
@@ -62,8 +72,8 @@ export default class Home extends Component {
   }
 
   createProject = () => {
-    const { repo_dir, projectName, projects } = this.state;
-    const payload = { name: projectName, repo_dir: repo_dir };
+    const { repo_dir, projectName, projects, description } = this.state;
+    const payload = { name: projectName, repo_dir, description };
     createProject(payload)
       .then((res) => {
         this.setState({ projects: [...projects, res.data] });
@@ -83,18 +93,14 @@ export default class Home extends Component {
         <Input type="text" name="repo_dir" placeholder="github" onChange={this.handleInput} />
       </FormGroup>
       <FormGroup row>
-        <Label>Username</Label>
-        <Input type="email" name="username" placeholder="Repo username" onChange={this.handleInput} />
-      </FormGroup>
-      <FormGroup row>
-        <Label>Password</Label>
-        <Input type="password" name="password" onChange={this.handleInput} />
+        <Label> Description </Label>
+        <Input type="textarea" name="description" placeholder="Short description about project" onChange={this.handleInput} />
       </FormGroup>
     </div>
   );;
 
   render() {
-    const { projects } = this.state;
+    const { projects, updatesCount } = this.state;
     return (
       <div className="page-wrapper">
         <Header />
@@ -106,8 +112,8 @@ export default class Home extends Component {
             {projects.map(project => (<ProjectCard project={project} />))}
           </div>
           <div className="row project-details">
-            <div className="col-sm-12 col-md-7">
-              <Graph />
+            <div className="col-sm-12 col-md-7 graph-wrapper">
+              <Graph data={updatesCount} />
             </div>
           </div>
         </div>
