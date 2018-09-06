@@ -55,18 +55,25 @@ export default class Project extends Component {
       <div className="page-wrapper">
         <Header />
         <div className="container">
+
           <div className="project-desciption">
-            <div className="card container">
-              <h3 className="project-name"> Project: {project.name} </h3>
-              <h6 className="project-details">Repo Dir:{project.repo_dir} </h6>
+            <div className="card">
+              <div className="card-body">
+                <h3 className="project-name"> {project.name} </h3>
+                <p className="desciption-tex"> {project.description} </p>
+              </div>
+              <div className="card-footer">
+                <span className="project-details"> {project.repo_dir} </span>
+                <span className="project-details"> Total Updates:{updates.length} </span>
+              </div>
             </div>
           </div>
 
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-6 update-list">
               {this.renderProjectList(updates)}
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 editor order-sm-1">
               <Editor updateData={this.updateData} projectId={project.id} />
             </div>
           </div>
