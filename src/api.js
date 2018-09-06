@@ -1,7 +1,9 @@
 import axios from 'axios';
 
-const api = axios.create({ baseURL: 'http://localhost:8000/' });
+const api = axios.create({ baseURL: process.env.REACT_APP_API_URL });
 // const githubApi = axios.create({ baseURL: 'https://api.github.com' });
+// console.log(process.env)
+// debugger;
 export function createProject(payload) {
   return api.post('projects/', payload);
 }
