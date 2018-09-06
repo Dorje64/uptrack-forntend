@@ -1,33 +1,29 @@
 import React from 'react';
 import {
-  LineChart, Line, XAxis, Tooltip, CartesianGrid,
+  BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid,
 } from 'recharts';
 
-const data = [
-  { month: 'jan', leave_count: 3, rejected_count: 1, accepted_leave: 1 },
-  { month: 'feb', leave_count: 4, rejected_count: 1, accepted_leave: 1 },
-  { month: 'Mar', leave_count: 1, rejected_count: 0, accepted_leave: 1,},
-  { month: 'Apr', leave_count: 2, rejected_count: 1, accepted_leave: 1 },
-  { month: 'Jun', leave_count: 3, rejected_count: 1, accepted_leave: 2 },
-  { month: 'May', leave_count: 0, rejected_count: 0, accepted_leave: 0 },
-  { month: 'Aug', leave_count: 4, rejected_count: 2, accepted_leave: 1 },
-  { month: 'Jul', leave_count: 1, rejected_count: 1, accepted_leave: 1 },
-  { month: 'Sept', leave_count: 1, rejected_count: 0, accepted_leave: 1 },
-  { month: 'Oct', leave_count: 0, rejected_count: 0, accepted_leave: 1 },
-  { month: 'Nov', leave_count: 3, rejected_count: 3, accepted_leave: 0 },
-  { month: 'Dec', leave_count: 1, rejected_count: 0, accepted_leave: 1}
-];
+// const data = [
+//   { project: 'jan', update_counts: 3, },
+//   { project: 'feb', update_counts: 4, },
+//   { project: 'Mar', update_counts: 1, },
+//   { project: 'Apr', update_counts: 2, },
+//   { project: 'Jun', update_counts: 3, },
+//   { project: 'May', update_counts: 0, },
+// ];
 
-const Graph = () => (
-  <div className="graph card">
-    <LineChart width={600} height={400} data={data} margin={{ top: 5, right: 20, left: 10, bottom: 5 }} >
-      <XAxis dataKey="month" />
-      <Tooltip />
-      <CartesianGrid stroke="#f5f5f5" />
-      <Line type="monotone" dataKey="leave_count" stroke="#ff7300" yAxisId={0} />
-      <Line type="monotone" dataKey="rejected_count" stroke="#387908" yAxisId={1} />
-    </LineChart>
-  </div>
-);
+const Graph = (data) => {
+  return (
+    <div className="graph card">
+      <BarChart width={500} height={400} data={data.data} margin={{ top: 5, right: 20, left: 10, bottom: 5 } } >
+        <XAxis dataKey="project__name" />
+        <YAxis />
+        <Tooltip />
+        <CartesianGrid stroke="#f9f5f5" />
+        <Bar type="monotone" dataKey="update" fill="#8884d8" yAxisId={0} />
+      </BarChart>
+    </div>
+  );
+}
 
 export default Graph;
