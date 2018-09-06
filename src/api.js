@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({ baseURL: 'http://localhost:8000/' });
-
+// const githubApi = axios.create({ baseURL: 'https://api.github.com' });
 export function createProject(payload) {
   return api.post('projects/', payload);
 }
@@ -22,3 +22,11 @@ export function createUpdate(payload) {
 export function fetchUpdates(projectId) {
   return api.get(`projects/${projectId}/updates/`);
 }
+
+export function getUpdateCount() {
+  return api.get('updates-count');
+}
+
+// export function getCommits(username, repo) {
+//   return githubApi.get(`${username}/${repo}/commit_activity`);
+// }
