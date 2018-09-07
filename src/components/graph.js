@@ -15,7 +15,7 @@ import {
 const Graph = (data) => {
   return (
     <div className="graph card">
-      <BarChart width={500} height={400} data={data.data} margin={{ top: 5, right: 20, left: 10, bottom: 5 } } >
+      <BarChart width={600} height={400} data={data.data} margin={{ top: 5, right: 20, left: 10, bottom: 5 } } >
         <XAxis dataKey="project__name" />
         <YAxis />
         <Tooltip />
