@@ -36,10 +36,16 @@ export default class Home extends Component {
   }
 
   renderPageInfo = () => (
-    <div className="page-info">
-      <span className="text"> DASHBOARD </span>
-      <Button onClick={this.toggle} className="btn btn-primary create-button"> Create Project </Button>
-      {this.modal()}
+    <div className="page-info row">
+      <div className="col">
+        <span className="text"> DASHBOARD </span>
+        <br />
+        <i style={{ color: '#a0b0ba' }}> Uptrack is a webapp for tracking updates of projects. </i>
+      </div>
+      <div className="col">
+        <Button onClick={this.toggle} className="btn btn-primary create-button"> Create Project </Button>
+        {this.modal()}
+      </div>
     </div>
   )
 
@@ -53,7 +59,7 @@ export default class Home extends Component {
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={this.createProject}>Create</Button>
-        ;;  {' '}
+          {' '}
           <Button color="secondary" onClick={this.toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>
