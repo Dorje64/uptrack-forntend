@@ -26,3 +26,24 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.page-wrapper{
+  background-color: #eff4f5;
+}
+
+/* https://getbootstrap.com  header style concept */
+.bd-navbar {
+    min-height: 4rem;
+    background-color: #04a4cf;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0,0,0,.1);
+}
+
+.logo {
+  color: #fff;
+  font-family: fantasy;
+  font-weight: bold;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}

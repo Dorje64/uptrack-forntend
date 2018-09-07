@@ -1,0 +1,29 @@
+.create-button {
+  float: right;
+}
+
+.page-info{
+  width: 100%;
+}
+
+.page-info .text{
+  float: left;
+  color: #009efb;
+}
+
+.page-info{
+  margin: 3rem 0 3rem 0;
+}
+
+.graph{
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.graph-wrapper{
+  margin: 10px 0 0 0
+}
+
+.sup-text{
+  color: #a0b0ba;
+}
